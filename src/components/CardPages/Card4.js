@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import YouTube from 'react-youtube';
 
-export default function Card4({ tempCardInfo }) {
+const loadingIcon = <img className="absolute " alt="loadingIcon" src={process.env.PUBLIC_URL + '/loadingIcon.svg'}></img>
+
+export default function Card4({ tempCardInfo, width }) {
+
+    const [ videoLoading, setVideoLoading ] = useState(true)
+
+    const videoDoneLoading = () => {
+        setVideoLoading(false)
+    }
+
     const opts = {
-        width: '350',
-        height: '300',
+        width: width,
+        height: width*2/3,
         playerVars: {
-          // https://developers.google.com/youtube/player_parameters
-          autoplay: 1,
+          autoplay: 0,
         },
       };
 
@@ -18,8 +26,10 @@ export default function Card4({ tempCardInfo }) {
             src={tempCardInfo.posterURL} alt={`Movie poster for ${tempCardInfo.title}`}> 
         </img>
         <div className="text-2xl text-gray-200 mt-5 ml-3">Trailer: </div>
-        <div className="w-full z-30 flex justify-center">
-            <YouTube videoId={tempCardInfo.trailer} opts={opts}/>
+        <div className="w-full z-30 flex justify-center relative">
+            {videoLoading ? loadingIcon: null}
+            <YouTube videoId={tempCardInfo.trailer} onReady={videoDoneLoading}  opts={opts}/>
+            
         </div>
     </>
     )

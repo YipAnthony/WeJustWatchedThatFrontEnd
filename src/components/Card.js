@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Card1 from './CardPages/Card1'
 import Card2 from './CardPages/Card2'
 import Card3 from './CardPages/Card3'
@@ -7,6 +7,8 @@ import Card4 from './CardPages/Card4'
 export default function Card() {
 
     const [ cardNavigation, setCardNavigation ] = useState(0)
+
+    const ref = useRef(null);
 
     const touchLeft = () => {
         setCardNavigation(prev => {
@@ -42,7 +44,7 @@ export default function Card() {
         <Card1 tempCardInfo={tempCardInfo}/>, 
         <Card2 tempCardInfo={tempCardInfo}/>, 
         <Card3 tempCardInfo={tempCardInfo}/>, 
-        <Card4 tempCardInfo={tempCardInfo}/> 
+        <Card4 tempCardInfo={tempCardInfo} width={ref.current ? ref.current.offsetWidth:null}/> 
     ]
 
     let pageIndicator = [];
@@ -53,7 +55,7 @@ export default function Card() {
     }
 
     return (
-        <div className="border border-gray-700 rounded-lg w-11/12 h-full mx-auto flex flex-col overflow-hidden relative">
+        <div ref={ref}  className="border border-gray-700 rounded-lg w-11/12 h-full mx-auto flex flex-col overflow-hidden relative">
             
 
             {cardArray[cardNavigation]}

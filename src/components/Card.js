@@ -55,7 +55,7 @@ export default function Card() {
     }
 
     return (
-        <div ref={ref}  className="border border-gray-700 rounded-lg w-11/12 h-full mx-auto flex flex-col overflow-hidden relative">
+        <div ref={ref}  className="border border-gray-900 rounded-lg w-11/12 h-full mx-auto flex flex-col overflow-hidden relative">
             
 
             {cardArray[cardNavigation]}

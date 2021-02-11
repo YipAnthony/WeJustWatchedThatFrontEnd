@@ -17,15 +17,18 @@ export default function Card4({ tempCardInfo, width }) {
         playerVars: {
           autoplay: 0,
         },
-      };
+    };
+
+    const moviePoster = {
+        backgroundImage: `url(${tempCardInfo.posterURL})`,
+        backgroundSize: "100% auto"
+    }
 
     return (
         <>
-        <img
-            className="opacity-20 absolute left-0 top-0 right-0" 
-            src={tempCardInfo.posterURL} alt={`Movie poster for ${tempCardInfo.title}`}> 
-        </img>
-        <div className="text-2xl text-gray-200 mt-5 ml-3">Trailer: </div>
+        <div className="h-full opacity-20 bg-center absolute left-0 top-0 right-0" style={moviePoster}></div>
+
+        <div className="text-2xl text-gray-200 mt-10 ml-3">Trailer: </div>
         <div className="w-full z-30 flex justify-center relative">
             {videoLoading ? loadingIcon: null}
             <YouTube videoId={tempCardInfo.trailer} onReady={videoDoneLoading}  opts={opts}/>

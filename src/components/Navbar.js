@@ -7,7 +7,7 @@ export default function Navbar({ picture, login }) {
         <div className="h-1/6 flex bg-black justify-between items-center p-5 relative">
             <div className="rounded-full w-10 h-10 overflow-hidden">
                 {login ?
-                    <img src={picture} alt="User profile picture"/>: 
+                    <img src={picture} alt="User profile"/>: 
                     <span className="">
                         <svg
                             className="w-10 h-10 text-gray-500"

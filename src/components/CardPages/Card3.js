@@ -17,7 +17,7 @@ export default function Card3({ tempCardInfo }) {
                     return (
                         <img
                             key={provider}
-                            className="m-5 opacity-100 z-10 rounded-3xl"
+                            className="w-14 h-14 m-3 opacity-100 z-10 rounded-2xl"
                             src={provider} alt={`Logo`}
                         >
                         </img>

@@ -3,7 +3,7 @@ import FacebookLogin from 'react-facebook-login';
 import Navbar from './components/Navbar'
 import VotingPage from './components/VotingPage'
 import HomePage from './components/Homepage'
-import CreateSession from './components/CreateSession';
+import CreateSession from './components/CreateSession/CreateSession';
 import JoinSession from './components/JoinSession';
 import History from './components/History';
 

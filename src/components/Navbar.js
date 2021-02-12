@@ -1,17 +1,21 @@
 import React from 'react'
 
-export default function Navbar() {
+export default function Navbar({ picture, login }) {
     // add in login status in the prop, filter off user/logout icon if not logged in
+    
     return (
         <div className="h-1/6 flex bg-black justify-between items-center p-5 relative">
             <div className="rounded-full w-10 h-10 overflow-hidden">
-                <span className="">
-                    <svg
-                        className="w-10 h-10 text-gray-500"
-                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                    </svg>
-                </span>
+                {login ?
+                    <img src={picture} alt="User profile picture"/>: 
+                    <span className="">
+                        <svg
+                            className="w-10 h-10 text-gray-500"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                        </svg>
+                    </span>
+                }
             </div>
             <div>
                 <div className="text-sm text-center text-red-500">

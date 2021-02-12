@@ -4,10 +4,10 @@ export default function SelectProviders({selectedProviders, setSelectedProviders
 
     const handleProvider = (id) => {
         setSelectedProviders(prev => {
-            let current = prev[id]
+            let current = prev[id].selected
             return {
                 ...prev,
-                [id]: !current
+                [id]: {...prev[id], selected: !current}
             }
         })
     }
@@ -24,7 +24,7 @@ export default function SelectProviders({selectedProviders, setSelectedProviders
                         return (
                             <div className="m-4 w-20 h-20 relative" onClick={() => handleProvider(providerID)} key={`providerIcon${providerID}`}>
                                 <div>
-                                    {selectedProviders[providerID] ? 
+                                    {selectedProviders[providerID].selected ? 
                                     <svg
                                         className="absolute -top-3 -right-3 w-8 h-8 text-blue-600 bg-white rounded-full border-blue-600 border-2" 
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -32,7 +32,7 @@ export default function SelectProviders({selectedProviders, setSelectedProviders
                                     </svg>
                                     :null}
                                 </div>
-                                <img className={`rounded-xl ${selectedProviders[providerID] ? "border-blue-500 border-4":""}`} src={service.logo} alt={service.provider}></img>   
+                                <img className={`rounded-xl ${selectedProviders[providerID].selected ? "border-blue-500 border-4":""}`} src={service.logo} alt={service.provider}></img>   
                             </div>
                         )
                     })

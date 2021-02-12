@@ -4,11 +4,11 @@ export default function SelectGenres({ selectedGenres, setSelectedGenres, genres
 
     const handleGenre = (id) => {
         setSelectedGenres(prev => {
-            let current = prev[id]
+            let current = prev[id].selected
             return {
                 ...prev,
-                noPreference: false,
-                [id]: !current
+                "noPreference": {"selected":false, "name": "No Preference"},
+                [id]: {...prev[id], selected: !current}
             }
         })
     }
@@ -22,15 +22,15 @@ export default function SelectGenres({ selectedGenres, setSelectedGenres, genres
             <div>
                 <div className="text-gray-200 text-center text-lg font-bold">Select genres: </div>
             </div>
-            <div className="flex flex-wrap justify-center">
+            <div className="flex flex-wrap justify-start mx-3">
                 {genres.map(genre => {
 
-                    if (genre === "noPreference") return 
+                    if (genre === "noPreference") return null
 
                     return (
-                    <div className="m-3 bg-gray-600 py-2 px-3 rounded-lg relative">
+                    <div className="m-2 bg-gray-600 py-2 px-3 rounded-lg relative">
                          <div>
-                            {selectedGenres[genre.id] ? 
+                            {selectedGenres[genre.id].selected ? 
                             <svg
                                 className="absolute -top-2 -right-2 w-6 h-6 text-blue-600 bg-white rounded-full border-blue-600 border-2" 
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -45,7 +45,7 @@ export default function SelectGenres({ selectedGenres, setSelectedGenres, genres
             </div>
             <div className="m-3 mt-10 w-max mx-auto bg-gray-600 py-2 px-3 rounded-lg relative">
                 <div>
-                    {selectedGenres.noPreference ? 
+                    {selectedGenres.noPreference.selected ? 
                     <svg
                         className="absolute -top-2 -right-2 w-6 h-6 text-blue-600 bg-white rounded-full border-blue-600 border-2" 
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
